@@ -5,10 +5,11 @@ import { useDpadGamepadNavigation } from "./gamepadNavigation";
 
 /**
  * Wires up "back" for TV remotes: Escape/Backspace on a keyboard (how most
- * TV browsers report a hardware back button) and the gamepad's Cross(X)
- * button both navigate to the previous screen per `getBackTarget`. Direction
- * and confirm input are handled separately by the spatial navigation library
- * itself (see gamepadNavigation.ts and FocusableButton).
+ * TV browsers report a hardware back button) and the gamepad's Backspace
+ * button (buttons[1] per the controller's firmware spec) both navigate to
+ * the previous screen per `getBackTarget`. Direction and confirm input are
+ * handled separately by the spatial navigation library itself (see
+ * gamepadNavigation.ts and FocusableButton).
  */
 export function useBackNavigation() {
   const view = useGameStore((state) => state.view);
