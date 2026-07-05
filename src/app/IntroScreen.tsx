@@ -111,13 +111,13 @@ export function IntroScreen() {
             </FocusableButton>
           )}
           {!isLast && (
-            <FocusableButton type="button" className="accent" onClick={() => setSlide((s) => s + 1)}>
+            <FocusableButton type="button" className="accent" onClick={() => setSlide((s) => s + 1)} autoFocus>
               下一页
             </FocusableButton>
           )}
           {isLast && (
             <>
-              <FocusableButton type="button" className="accent" onClick={() => setView("lessons")}>
+              <FocusableButton type="button" className="accent" onClick={() => setView("lessons")} autoFocus>
                 进入讲解模式
               </FocusableButton>
               <FocusableButton type="button" onClick={() => setView("setup")}>

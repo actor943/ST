@@ -217,7 +217,7 @@ export function LessonRulesScreen() {
           <h1>你来当裁判：{scenario.title}</h1>
         </div>
         <div className="lesson-nav">
-          <FocusableButton type="button" onClick={() => setView("lessons")}>
+          <FocusableButton type="button" onClick={() => setView("lessons")} autoFocus>
             返回讲解目录
           </FocusableButton>
         </div>

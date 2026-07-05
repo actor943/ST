@@ -190,7 +190,7 @@ export function LessonBoatScreen() {
           <FocusableButton type="button" onClick={() => setView("lessonWind")}>
             下一课：风摆
           </FocusableButton>
-          <FocusableButton type="button" onClick={() => setView("lessons")}>
+          <FocusableButton type="button" onClick={() => setView("lessons")} autoFocus>
             返回讲解目录
           </FocusableButton>
         </div>

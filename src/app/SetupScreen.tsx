@@ -38,6 +38,7 @@ export function SetupScreen() {
               type="button"
               className={index === stepIndex ? "active" : index < stepIndex ? "done" : ""}
               onClick={() => setSetupStep(step)}
+              autoFocus={index === stepIndex}
             >
               {STEP_TITLE[step]}
             </FocusableButton>

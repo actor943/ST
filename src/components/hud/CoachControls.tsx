@@ -24,7 +24,7 @@ export function CoachControls() {
 
   return (
     <section className="coach-controls">
-      <FocusableButton type="button" onClick={togglePause}>
+      <FocusableButton type="button" onClick={togglePause} autoFocus>
         暂停/继续
       </FocusableButton>
       <FocusableButton type="button" onClick={toggleSlowMotion}>

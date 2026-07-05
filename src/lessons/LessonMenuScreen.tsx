@@ -28,8 +28,8 @@ export function LessonMenuScreen() {
         <p className="eyebrow">讲解模式</p>
         <h1>讲清楚船为什么这样走，规则怎么判</h1>
         <div className="home-entries lesson-entries">
-          {lessons.map((lesson) => (
-            <FocusableButton key={lesson.view} type="button" onClick={() => setView(lesson.view)}>
+          {lessons.map((lesson, index) => (
+            <FocusableButton key={lesson.view} type="button" onClick={() => setView(lesson.view)} autoFocus={index === 0}>
               <strong>{lesson.title}</strong>
               <span>{lesson.blurb}</span>
             </FocusableButton>

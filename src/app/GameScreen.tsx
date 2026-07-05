@@ -41,7 +41,7 @@ export function GameScreen() {
             )}
           </>
         )}
-        <FocusableButton type="button" className="hud-toggle" onClick={toggleHud}>
+        <FocusableButton type="button" className="hud-toggle" onClick={toggleHud} autoFocus={!hudVisible}>
           {hudVisible ? "隐藏界面 (H)" : "显示界面 (H)"}
         </FocusableButton>
       </div>

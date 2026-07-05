@@ -44,8 +44,14 @@ export function HomeScreen() {
         <h1>把看不见的风、流、战术和规则变成大屏互动</h1>
         <p>1-4 名玩家用蓝牙帆船模型手柄同屏比赛。风摆、阵风、水流、Layline 和自动裁判全部可视化。</p>
         <div className="home-entries">
-          {entries.map((entry) => (
-            <FocusableButton key={entry.title} type="button" className={entry.accent ? "accent" : ""} onClick={entry.onClick}>
+          {entries.map((entry, index) => (
+            <FocusableButton
+              key={entry.title}
+              type="button"
+              className={entry.accent ? "accent" : ""}
+              onClick={entry.onClick}
+              autoFocus={index === 0}
+            >
               <strong>{entry.title}</strong>
               <span>{entry.blurb}</span>
             </FocusableButton>

@@ -70,7 +70,7 @@ export function ResultsScreen() {
         </div>
 
         <div className="demo-actions">
-          <FocusableButton type="button" className="accent" onClick={startRace}>
+          <FocusableButton type="button" className="accent" onClick={startRace} autoFocus>
             再来一局
           </FocusableButton>
           <FocusableButton

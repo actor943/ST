@@ -135,7 +135,7 @@ export function LessonWindScreen() {
           <FocusableButton type="button" onClick={() => setView("lessonRules")}>
             下一课：你来当裁判
           </FocusableButton>
-          <FocusableButton type="button" onClick={() => setView("lessons")}>
+          <FocusableButton type="button" onClick={() => setView("lessons")} autoFocus>
             返回讲解目录
           </FocusableButton>
         </div>
