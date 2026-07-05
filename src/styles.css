@@ -1019,3 +1019,11 @@ input {
 .hud-toggle:hover {
   border-color: #ffe082;
 }
+
+/* TV remote / gamepad D-pad cursor: whichever button spatial navigation has
+   focused gets this highlight, independent of real mouse hover/DOM focus. */
+.tv-focused {
+  outline: 3px solid #ffe082;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 6px rgba(255, 224, 130, 0.25);
+}

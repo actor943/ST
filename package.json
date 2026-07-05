@@ -10,6 +10,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@noriginmedia/norigin-spatial-navigation": "^3.2.1",
     "@pixi/react": "^8.0.3",
     "gsap": "^3.13.0",
     "pixi.js": "^8.14.3",

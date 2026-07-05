@@ -1,5 +1,6 @@
 import { useGameStore } from "../../store/gameStore";
 import type { OverlaySettings } from "../../game/types";
+import { FocusableButton } from "../../app/navigation/FocusableButton";
 
 const overlayLabels: Record<keyof OverlaySettings, string> = {
   wind: "风",
@@ -23,34 +24,34 @@ export function CoachControls() {
 
   return (
     <section className="coach-controls">
-      <button type="button" onClick={togglePause}>
+      <FocusableButton type="button" onClick={togglePause}>
         暂停/继续
-      </button>
-      <button type="button" onClick={toggleSlowMotion}>
+      </FocusableButton>
+      <FocusableButton type="button" onClick={toggleSlowMotion}>
         {timeScale === 1 ? "慢放" : "正常速度"}
-      </button>
-      <button type="button" onClick={restart}>
+      </FocusableButton>
+      <FocusableButton type="button" onClick={restart}>
         重开
-      </button>
-      <button type="button" onClick={() => setView("setup")}>
+      </FocusableButton>
+      <FocusableButton type="button" onClick={() => setView("setup")}>
         设置
-      </button>
-      <button type="button" onClick={() => setView("results")}>
+      </FocusableButton>
+      <FocusableButton type="button" onClick={() => setView("results")}>
         结果
-      </button>
-      <button type="button" onClick={setupRule10Demo}>
+      </FocusableButton>
+      <FocusableButton type="button" onClick={setupRule10Demo}>
         规则10
-      </button>
+      </FocusableButton>
       <div className="boat-count">
         {[1, 2, 3, 4].map((count) => (
-          <button
+          <FocusableButton
             key={count}
             type="button"
             className={activeBoatIds.length === count ? "active" : ""}
             onClick={() => setBoatCount(count)}
           >
             {count}船
-          </button>
+          </FocusableButton>
         ))}
       </div>
       <div className="overlay-toggles">

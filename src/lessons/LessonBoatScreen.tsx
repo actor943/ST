@@ -15,6 +15,7 @@ import { useGameStore } from "../store/gameStore";
 import { LessonStage } from "./LessonStage";
 import { PolarDial } from "./PolarDial";
 import { useFixedStepLoop } from "./useFixedStepLoop";
+import { FocusableButton } from "../app/navigation/FocusableButton";
 
 const WIND = { directionDeg: 0, speedKnots: 12 };
 const CURRENT: Vec2 = { x: 16, y: 4 };
@@ -186,12 +187,12 @@ export function LessonBoatScreen() {
           <h1>风角实验台：角度不同，速度不同</h1>
         </div>
         <div className="lesson-nav">
-          <button type="button" onClick={() => setView("lessonWind")}>
+          <FocusableButton type="button" onClick={() => setView("lessonWind")}>
             下一课：风摆
-          </button>
-          <button type="button" onClick={() => setView("lessons")}>
+          </FocusableButton>
+          <FocusableButton type="button" onClick={() => setView("lessons")}>
             返回讲解目录
-          </button>
+          </FocusableButton>
         </div>
       </header>
 
@@ -248,12 +249,12 @@ export function LessonBoatScreen() {
               <input type="checkbox" checked={currentOn} onChange={() => setCurrentOn((v) => !v)} />
               打开水流（看航迹被推歪，STW 不变、SOG 变）
             </label>
-            <button type="button" className="accent" onClick={startGhostRace}>
+            <FocusableButton type="button" className="accent" onClick={startGhostRace}>
               和幽灵船比赛到上方绿线
-            </button>
-            <button type="button" onClick={reset}>
+            </FocusableButton>
+            <FocusableButton type="button" onClick={reset}>
               重置
-            </button>
+            </FocusableButton>
           </div>
         </aside>
       </div>

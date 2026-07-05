@@ -8,10 +8,14 @@ import { LessonMenuScreen } from "../lessons/LessonMenuScreen";
 import { LessonRulesScreen } from "../lessons/LessonRulesScreen";
 import { LessonWindScreen } from "../lessons/LessonWindScreen";
 import { useGameStore } from "../store/gameStore";
+import "./navigation/spatialNavigation";
+import { useBackNavigation } from "./navigation/useBackNavigation";
 import "../styles.css";
 
 export function App() {
   const view = useGameStore((state) => state.view);
+
+  useBackNavigation();
 
   if (view === "race") return <GameScreen />;
   if (view === "setup") return <SetupScreen />;

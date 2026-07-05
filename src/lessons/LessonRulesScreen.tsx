@@ -9,6 +9,7 @@ import { createRulesEngineState, ruleTitle, stepRules } from "../sim/rules/rules
 import { useGameStore } from "../store/gameStore";
 import { LessonStage } from "./LessonStage";
 import { useFixedStepLoop } from "./useFixedStepLoop";
+import { FocusableButton } from "../app/navigation/FocusableButton";
 
 const WIND_FROM = 0;
 const QUESTION_DISTANCE = 210;
@@ -216,9 +217,9 @@ export function LessonRulesScreen() {
           <h1>你来当裁判：{scenario.title}</h1>
         </div>
         <div className="lesson-nav">
-          <button type="button" onClick={() => setView("lessons")}>
+          <FocusableButton type="button" onClick={() => setView("lessons")}>
             返回讲解目录
-          </button>
+          </FocusableButton>
         </div>
       </header>
 
@@ -237,9 +238,9 @@ export function LessonRulesScreen() {
               <strong>两船即将相遇——谁必须避让？</strong>
               <div className="question-buttons">
                 {scenario.boats.map((boat) => (
-                  <button key={boat.id} type="button" style={{ borderColor: boat.color }} onClick={() => answer(boat.id)}>
+                  <FocusableButton key={boat.id} type="button" style={{ borderColor: boat.color }} onClick={() => answer(boat.id)}>
                     {boat.name}
-                  </button>
+                  </FocusableButton>
                 ))}
               </div>
             </div>
@@ -265,19 +266,19 @@ export function LessonRulesScreen() {
 
           <div className="scenario-buttons">
             {SCENARIOS.map((item, index) => (
-              <button key={item.id} type="button" className={index === scenarioIndex ? "active" : ""} onClick={() => load(index, false)}>
+              <FocusableButton key={item.id} type="button" className={index === scenarioIndex ? "active" : ""} onClick={() => load(index, false)}>
                 规则 {item.rule}
-              </button>
+              </FocusableButton>
             ))}
           </div>
 
           <div className="lesson-actions">
-            <button type="button" className="accent" onClick={() => load(scenarioIndex, false)}>
+            <FocusableButton type="button" className="accent" onClick={() => load(scenarioIndex, false)}>
               重播（犯规版本）
-            </button>
-            <button type="button" onClick={() => load(scenarioIndex, true)}>
+            </FocusableButton>
+            <FocusableButton type="button" onClick={() => load(scenarioIndex, true)}>
               换一个结果（避让成功）
-            </button>
+            </FocusableButton>
           </div>
 
           <div className="lesson-hint">

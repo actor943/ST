@@ -3,6 +3,7 @@ import { COURSE_IDS, getCourse } from "../sim/course/courses";
 import { DIFFICULTY_IDS, DIFFICULTY_LABEL, ENVIRONMENT_IDS, ENVIRONMENT_LABEL } from "../sim/environment";
 import type { SetupStep } from "../store/gameStore";
 import { useGameStore } from "../store/gameStore";
+import { FocusableButton } from "./navigation/FocusableButton";
 
 const STEP_ORDER: SetupStep[] = ["players", "course", "difficulty", "environment", "controllers"];
 
@@ -32,14 +33,14 @@ export function SetupScreen() {
         <h1>{STEP_TITLE[setupStep]}</h1>
         <div className="setup-progress">
           {STEP_ORDER.map((step, index) => (
-            <button
+            <FocusableButton
               key={step}
               type="button"
               className={index === stepIndex ? "active" : index < stepIndex ? "done" : ""}
               onClick={() => setSetupStep(step)}
             >
               {STEP_TITLE[step]}
-            </button>
+            </FocusableButton>
           ))}
         </div>
 
@@ -51,23 +52,23 @@ export function SetupScreen() {
 
         <div className="demo-actions">
           {stepIndex > 0 && (
-            <button type="button" onClick={() => setSetupStep(STEP_ORDER[stepIndex - 1])}>
+            <FocusableButton type="button" onClick={() => setSetupStep(STEP_ORDER[stepIndex - 1])}>
               上一步
-            </button>
+            </FocusableButton>
           )}
           {!isLast && (
-            <button type="button" className="accent" onClick={() => setSetupStep(STEP_ORDER[stepIndex + 1])}>
+            <FocusableButton type="button" className="accent" onClick={() => setSetupStep(STEP_ORDER[stepIndex + 1])}>
               下一步
-            </button>
+            </FocusableButton>
           )}
           {isLast && (
-            <button type="button" className="accent" onClick={startRace}>
+            <FocusableButton type="button" className="accent" onClick={startRace}>
               开始比赛
-            </button>
+            </FocusableButton>
           )}
-          <button type="button" onClick={() => setView("home")}>
+          <FocusableButton type="button" onClick={() => setView("home")}>
             返回首页
-          </button>
+          </FocusableButton>
         </div>
       </section>
     </main>
@@ -81,7 +82,7 @@ function PlayersStep() {
   return (
     <div className="option-cards">
       {[1, 2, 3, 4].map((count) => (
-        <button
+        <FocusableButton
           key={count}
           type="button"
           className={`option-card ${activeBoatIds.length === count ? "selected" : ""}`}
@@ -90,7 +91,7 @@ function PlayersStep() {
           <strong>{count} 人</strong>
           <span>{count === 1 ? "教学 / 计时" : count === 2 ? "规则演示" : count === 3 ? "中等对抗" : "大电视主 Demo"}</span>
           <em>{Array.from({ length: count }, (_, i) => `${i + 1}号船 Ch${i + 1}`).join(" · ")}</em>
-        </button>
+        </FocusableButton>
       ))}
     </div>
   );
@@ -105,7 +106,7 @@ function CourseStep() {
       {COURSE_IDS.map((id) => {
         const def = getCourse(id);
         return (
-          <button
+          <FocusableButton
             key={id}
             type="button"
             className={`option-card ${course.id === id ? "selected" : ""}`}
@@ -117,7 +118,7 @@ function CourseStep() {
             <em>
               {def.marks.length} 标 · 适合 {def.recommendedPlayers.min}-{def.recommendedPlayers.max} 人
             </em>
-          </button>
+          </FocusableButton>
         );
       })}
     </div>
@@ -159,7 +160,7 @@ function DifficultyStep() {
   return (
     <div className="option-cards three">
       {DIFFICULTY_IDS.map((id) => (
-        <button
+        <FocusableButton
           key={id}
           type="button"
           className={`option-card ${difficulty === id ? "selected" : ""}`}
@@ -167,7 +168,7 @@ function DifficultyStep() {
         >
           <strong>{DIFFICULTY_LABEL[id].name}</strong>
           <span>{DIFFICULTY_LABEL[id].blurb}</span>
-        </button>
+        </FocusableButton>
       ))}
     </div>
   );
@@ -180,7 +181,7 @@ function EnvironmentStep() {
   return (
     <div className="option-cards three">
       {ENVIRONMENT_IDS.map((id) => (
-        <button
+        <FocusableButton
           key={id}
           type="button"
           className={`option-card ${environment === id ? "selected" : ""}`}
@@ -188,7 +189,7 @@ function EnvironmentStep() {
         >
           <strong>{ENVIRONMENT_LABEL[id].name}</strong>
           <span>{ENVIRONMENT_LABEL[id].blurb}</span>
-        </button>
+        </FocusableButton>
       ))}
     </div>
   );

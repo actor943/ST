@@ -9,6 +9,7 @@ import { createBoatMotionState, stepBoatPhysics } from "../sim/boat/boatPhysics"
 import { LessonStage } from "../lessons/LessonStage";
 import { useFixedStepLoop } from "../lessons/useFixedStepLoop";
 import { useGameStore } from "../store/gameStore";
+import { FocusableButton } from "./navigation/FocusableButton";
 
 const SLIDES = [
   {
@@ -105,33 +106,33 @@ export function IntroScreen() {
 
         <div className="demo-actions">
           {slide > 0 && (
-            <button type="button" onClick={() => setSlide((s) => s - 1)}>
+            <FocusableButton type="button" onClick={() => setSlide((s) => s - 1)}>
               上一页
-            </button>
+            </FocusableButton>
           )}
           {!isLast && (
-            <button type="button" className="accent" onClick={() => setSlide((s) => s + 1)}>
+            <FocusableButton type="button" className="accent" onClick={() => setSlide((s) => s + 1)}>
               下一页
-            </button>
+            </FocusableButton>
           )}
           {isLast && (
             <>
-              <button type="button" className="accent" onClick={() => setView("lessons")}>
+              <FocusableButton type="button" className="accent" onClick={() => setView("lessons")}>
                 进入讲解模式
-              </button>
-              <button type="button" onClick={() => setView("setup")}>
+              </FocusableButton>
+              <FocusableButton type="button" onClick={() => setView("setup")}>
                 直接开始比赛
-              </button>
+              </FocusableButton>
             </>
           )}
-          <button type="button" onClick={() => setView("home")}>
+          <FocusableButton type="button" onClick={() => setView("home")}>
             返回首页
-          </button>
+          </FocusableButton>
         </div>
 
         <div className="intro-dots">
           {SLIDES.map((item, index) => (
-            <button
+            <FocusableButton
               key={item.title}
               type="button"
               className={index === slide ? "active" : ""}

@@ -10,6 +10,7 @@ import { useGamepadControls } from "../game/loop/gamepadControls";
 import { useKeyboardControls } from "../game/loop/useKeyboardControls";
 import { GameStage } from "../game/rendering/GameStage";
 import { useGameStore } from "../store/gameStore";
+import { FocusableButton } from "./navigation/FocusableButton";
 
 export function GameScreen() {
   const activeBoatIds = useGameStore((state) => state.activeBoatIds);
@@ -40,9 +41,9 @@ export function GameScreen() {
             )}
           </>
         )}
-        <button type="button" className="hud-toggle" onClick={toggleHud}>
+        <FocusableButton type="button" className="hud-toggle" onClick={toggleHud}>
           {hudVisible ? "隐藏界面 (H)" : "显示界面 (H)"}
-        </button>
+        </FocusableButton>
       </div>
     </main>
   );

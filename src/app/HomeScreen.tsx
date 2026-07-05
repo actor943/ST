@@ -1,4 +1,5 @@
 import { useGameStore } from "../store/gameStore";
+import { FocusableButton } from "./navigation/FocusableButton";
 
 export function HomeScreen() {
   const setView = useGameStore((state) => state.setView);
@@ -44,10 +45,10 @@ export function HomeScreen() {
         <p>1-4 名玩家用蓝牙帆船模型手柄同屏比赛。风摆、阵风、水流、Layline 和自动裁判全部可视化。</p>
         <div className="home-entries">
           {entries.map((entry) => (
-            <button key={entry.title} type="button" className={entry.accent ? "accent" : ""} onClick={entry.onClick}>
+            <FocusableButton key={entry.title} type="button" className={entry.accent ? "accent" : ""} onClick={entry.onClick}>
               <strong>{entry.title}</strong>
               <span>{entry.blurb}</span>
-            </button>
+            </FocusableButton>
           ))}
         </div>
       </section>

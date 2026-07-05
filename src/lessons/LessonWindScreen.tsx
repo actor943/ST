@@ -14,6 +14,7 @@ import { useGameStore } from "../store/gameStore";
 import { LessonStage } from "./LessonStage";
 import { WindHistoryStrip } from "./WindHistoryStrip";
 import { useFixedStepLoop } from "./useFixedStepLoop";
+import { FocusableButton } from "../app/navigation/FocusableButton";
 
 const BASE_WIND_DEG = 0;
 const TWS = 12;
@@ -131,12 +132,12 @@ export function LessonWindScreen() {
           <h1>风不是固定的：风摆决定哪条航线更快</h1>
         </div>
         <div className="lesson-nav">
-          <button type="button" onClick={() => setView("lessonRules")}>
+          <FocusableButton type="button" onClick={() => setView("lessonRules")}>
             下一课：你来当裁判
-          </button>
-          <button type="button" onClick={() => setView("lessons")}>
+          </FocusableButton>
+          <FocusableButton type="button" onClick={() => setView("lessons")}>
             返回讲解目录
-          </button>
+          </FocusableButton>
         </div>
       </header>
 
@@ -159,9 +160,9 @@ export function LessonWindScreen() {
 
           <div className="lesson-mode-buttons">
             {(Object.keys(MODE_LABEL) as ShiftMode[]).map((item) => (
-              <button key={item} type="button" className={mode === item ? "active" : ""} onClick={() => restart(item)}>
+              <FocusableButton key={item} type="button" className={mode === item ? "active" : ""} onClick={() => restart(item)}>
                 {MODE_LABEL[item]}
-              </button>
+              </FocusableButton>
             ))}
           </div>
 
@@ -175,22 +176,22 @@ export function LessonWindScreen() {
           </div>
 
           {mode === "pendulum" && (
-            <button
+            <FocusableButton
               type="button"
               className="accent tack-button"
               onClick={() => setPlayerTack((tack) => (tack === "starboard" ? "port" : "starboard"))}
             >
               立即换舷（当前：{playerTack === "starboard" ? "右舷受风" : "左舷受风"}）
-            </button>
+            </FocusableButton>
           )}
 
           <div className="lesson-actions">
-            <button type="button" onClick={() => restart()}>
+            <FocusableButton type="button" onClick={() => restart()}>
               重新演示
-            </button>
-            <button type="button" onClick={() => setRunning((v) => !v)} disabled={doneRef.current}>
+            </FocusableButton>
+            <FocusableButton type="button" onClick={() => setRunning((v) => !v)} disabled={doneRef.current}>
               {running ? "暂停" : "继续"}
-            </button>
+            </FocusableButton>
           </div>
         </aside>
       </div>

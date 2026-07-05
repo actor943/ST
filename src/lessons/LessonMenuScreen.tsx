@@ -1,4 +1,5 @@
 import { useGameStore } from "../store/gameStore";
+import { FocusableButton } from "../app/navigation/FocusableButton";
 
 export function LessonMenuScreen() {
   const setView = useGameStore((state) => state.setView);
@@ -28,20 +29,20 @@ export function LessonMenuScreen() {
         <h1>讲清楚船为什么这样走，规则怎么判</h1>
         <div className="home-entries lesson-entries">
           {lessons.map((lesson) => (
-            <button key={lesson.view} type="button" onClick={() => setView(lesson.view)}>
+            <FocusableButton key={lesson.view} type="button" onClick={() => setView(lesson.view)}>
               <strong>{lesson.title}</strong>
               <span>{lesson.blurb}</span>
-            </button>
+            </FocusableButton>
           ))}
-          <button type="button" onClick={() => setView("setup")}>
+          <FocusableButton type="button" onClick={() => setView("setup")}>
             <strong>去比赛</strong>
             <span>学完了？选人数、场地开一局</span>
-          </button>
+          </FocusableButton>
         </div>
         <div className="demo-actions">
-          <button type="button" onClick={() => setView("home")}>
+          <FocusableButton type="button" onClick={() => setView("home")}>
             返回首页
-          </button>
+          </FocusableButton>
         </div>
       </section>
     </main>

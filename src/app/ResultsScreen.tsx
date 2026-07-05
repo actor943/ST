@@ -1,5 +1,5 @@
-import { PIXELS_PER_KNOT } from "../sim/boat/units";
 import { useGameStore } from "../store/gameStore";
+import { FocusableButton } from "./navigation/FocusableButton";
 
 export function ResultsScreen() {
   const boats = useGameStore((state) => state.boats);
@@ -70,10 +70,10 @@ export function ResultsScreen() {
         </div>
 
         <div className="demo-actions">
-          <button type="button" className="accent" onClick={startRace}>
+          <FocusableButton type="button" className="accent" onClick={startRace}>
             再来一局
-          </button>
-          <button
+          </FocusableButton>
+          <FocusableButton
             type="button"
             onClick={() => {
               setSetupStep("course");
@@ -81,10 +81,10 @@ export function ResultsScreen() {
             }}
           >
             换地图 / 设置
-          </button>
-          <button type="button" onClick={() => setView("home")}>
+          </FocusableButton>
+          <FocusableButton type="button" onClick={() => setView("home")}>
             回到首页
-          </button>
+          </FocusableButton>
         </div>
       </section>
     </main>
