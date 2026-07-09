@@ -44,7 +44,7 @@ type GameStore = {
   toggleOverlay: (key: keyof OverlaySettings) => void;
   toggleHud: () => void;
   togglePause: () => void;
-  toggleSlowMotion: () => void;
+  setTimeScale: (timeScale: number) => void;
   restart: () => void;
 };
 
@@ -86,8 +86,8 @@ export const useGameStore = create<GameStore>((set, get) => ({
       return;
     }
 
-    // Slow motion feeds less wall time into the accumulator; every simulated
-    // tick still advances exactly SIM_DT so results stay deterministic.
+    // Time scaling feeds more or less wall time into the accumulator; every
+    // simulated tick still advances exactly SIM_DT so results stay deterministic.
     const { steps, remainder } = splitFrameIntoSteps(frameAccumulator, frameDt * state.timeScale, SIM_DT);
     frameAccumulator = remainder;
     if (steps === 0) return;
@@ -179,7 +179,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
       }
     }));
   },
-  toggleSlowMotion: () => set((state) => ({ timeScale: state.timeScale === 1 ? 0.5 : 1 })),
+  setTimeScale: (timeScale) => set({ timeScale: Math.max(1, Math.min(2, timeScale)) }),
   restart: () => {
     const state = get();
     const env = buildEnvironment(state.difficulty, state.environment);
